@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 internal_error() {
   echo 'Status: 500 Internal Server Error'
