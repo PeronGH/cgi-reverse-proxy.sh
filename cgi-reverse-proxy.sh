@@ -1,22 +1,7 @@
 #!/bin/sh
 
-internal_error() {
-  echo 'Status: 500 Internal Server Error'
-  echo
-  for msg in "$@"; do
-    echo "$msg"
-  done
-  exit 1
-}
-
-base_url=$1
-
-if [ -z $base_url ]; then
-  internal_error 'base_url not set.'
-fi
-
 target_url="${REQUEST_URI#$SCRIPT_NAME}"
-target_url=$base_url"${target_url#/}"
+target_url=$BASE_URL"${target_url#/}"
 
 headers=`mktemp`
 printenv | awk -F'=' '/^HTTP_/ {
